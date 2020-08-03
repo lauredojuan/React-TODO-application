@@ -1,18 +1,29 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 
-export function ListTask(props) {
-	return (
-		<li key={props.id}>
-			{props.task}
-			<span>
-				<i
-					className="fa fa-trash"
-					onClick={() => props.deleteFunction(props.id)}
-				/>
-			</span>
-		</li>
-	);
+export class ListTask extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			iconVisible: false
+		};
+	}
+
+	render() {
+		let classToApply = this.state.iconVisible ? "visible" : "hidden";
+
+		return (
+			<li>
+				{this.props.task}
+				<span>
+					<i
+						className={`fa fa-trash ${classToApply}`}
+						onClick={() => this.props.deleteFunction(this.props.id)}
+					/>
+				</span>
+			</li>
+		);
+	}
 }
 
 ListTask.propTypes = {
