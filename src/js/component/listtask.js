@@ -13,7 +13,9 @@ export class ListTask extends React.Component {
 		let classToApply = this.state.iconVisible ? "visible" : "hidden";
 
 		return (
-			<li>
+			<li
+				onMouseEnter={() => this.setState({ iconVisible: true })}
+				onMouseLeave={() => this.setState({ iconVisible: false })}>
 				{this.props.task}
 				<span>
 					<i

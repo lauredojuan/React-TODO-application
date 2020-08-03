@@ -35,7 +35,17 @@ export class Home extends React.Component {
 	};
 
 	render() {
-		// console.log(this.state.taskList);
+		let listToDisplay = this.state.taskList.map((liContent, index) => {
+			return (
+				<ListTask
+					key={index}
+					task={liContent}
+					deleteFunction={this.deleteFunctionHandler}
+					id={index}
+				/>
+			);
+		});
+
 		return (
 			<div className="container">
 				<h1>To Do List</h1>
@@ -46,16 +56,11 @@ export class Home extends React.Component {
 					placeholder="What needs to be done?"
 				/>
 				<ul>
-					{this.state.taskList.map((liContent, index) => {
-						return (
-							<ListTask
-								key={index}
-								task={liContent}
-								deleteFunction={this.deleteFunctionHandler}
-								id={index}
-							/>
-						);
-					})}
+					{this.state.taskList.length ? (
+						listToDisplay
+					) : (
+						<li>There are no tasks on this list</li>
+					)}
 				</ul>
 			</div>
 		);
