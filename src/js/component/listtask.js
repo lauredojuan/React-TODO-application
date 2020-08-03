@@ -7,8 +7,8 @@ export function ListTask(props) {
 			{props.task}
 			<span>
 				<i
-					className="fa fa-trash-o"
-					onClick={() => props.deleteFunction}
+					className="fa fa-trash"
+					onClick={() => props.deleteFunction(props.id)}
 				/>
 			</span>
 		</li>

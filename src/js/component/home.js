@@ -24,10 +24,12 @@ export class Home extends React.Component {
 		};
 	}
 	updateTask = event => {
+		// console.log(event);
 		this.setState({ task: event.target.value });
 	};
 
 	saveTask = event => {
+		// console.log(event);
 		if (event.keyCode === 13) {
 			const newArray = [...this.state.taskList]; //spread operator in this line a copy of taskList is created and named newArray
 			newArray.push(this.state.task);
@@ -39,6 +41,7 @@ export class Home extends React.Component {
 	};
 
 	deleteFunctionHandler = id => {
+		// console.log(id);
 		const returnArray = this.state.taskList.filter(
 			(i, index) => index !== id
 		);
@@ -46,10 +49,10 @@ export class Home extends React.Component {
 	};
 
 	render() {
-		console.log(this.state.taskList);
+		// console.log(this.state.taskList);
 		return (
 			<div className="container">
-				<h1>ToDos</h1>
+				<h1>To Do List</h1>
 				<input
 					value={this.state.task}
 					onChange={this.updateTask}
